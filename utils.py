@@ -60,7 +60,7 @@ def obtener_imagen_pin() -> np.ndarray:
     return plt.imread(pinurl, format='jpg')
 
 
-def crear_plot(ordered_coords:int, id_zona:int) -> None:
+def crear_plot(ruta_coordenadas:int, id_zona:int) -> None:
     """Crea un plot con el recorrido optimizado y lo muestra.
 
     Args:
@@ -68,7 +68,7 @@ def crear_plot(ordered_coords:int, id_zona:int) -> None:
         id_zona (int): ID de la zona en classic.wowhead.com
     """
     # Deszippear coordeandas
-    x, y = np.array(list(map(list, zip(*(ordered_coords)))))
+    x, y = np.array(list(map(list, zip(*(ruta_coordenadas)))))
 
     # Obtener mapa y sus dimensiones
     maparead = obtener_imagen_mapa(id_zona)
@@ -98,4 +98,5 @@ def crear_plot(ordered_coords:int, id_zona:int) -> None:
     ax.imshow(maparead)
 
     # Plottear
+    plt.axis('off')
     plt.show()
